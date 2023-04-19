@@ -18,19 +18,20 @@ import { Component } from "@angular/core";
 export class UserComponent {
     // Properties
     firstName = 'John';
-    lastName = 'Doe';
+    lastName = 'Smith';
     age = 30;
+    address = {
+        street: '50 Main st',
+        city: 'Boston',
+        state: 'MA'
+    }
 
     // Methods
 
     // constructor runs when component is initialized
     // constructor is usually used to inject dependencies
     constructor() { 
-        console.log("Hello user...");
-        this.sayHello();
-        console.log(this.age);
-        this.hasBirthday();
-        console.log(this.age);
+       
     }
 
     sayHello() {
@@ -39,5 +40,9 @@ export class UserComponent {
 
     hasBirthday() {
         this.age += 1;
+    }
+
+    showAge() {
+        return this.age + 2;
     }
 }
