@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { User } from "src/app/models/User";
 
 // Create component Decorator with @Component
 // Marks the class a an Angular class
@@ -17,52 +18,24 @@ import { Component } from "@angular/core";
 
 export class UserComponent {
     // Properties
-    firstName: string;
-    lastName: string;
-    age: number;
-    address;
-
-    foo: any;
-    hasKids: boolean;
-    numberArray: number[];
-    stringArray: string[];
-    mixedArray: any[];
-    myTuple: [string, number, boolean];
-    unusable: void;
-    u: undefined;
-    n: null;
+    user: User; // points to the user interface
 
     // Methods
 
     // constructor runs when component is initialized
     // constructor is usually used to inject dependencies
-    constructor() { 
-       this.firstName = 'John';
-       this.lastName = 'Doe';
-       this.age = 30;
-       this.address = {
-        street: '50 Main st',
-        city: 'Boston',
-        state: 'MA'
-       }
-       this.foo = true;
-       this.hasKids = true;
-       this.numberArray = [1, 2, 3];
-       this.stringArray = ['hello', 'world']; 
-       this.mixedArray = [1, true, undefined, 'hey'];
-       this.myTuple = ['hello', 1, true];
-       this.unusable = undefined;
-       this.u = undefined;
-       this.n = null;
-
-       console.log(this.addNumbers(2, 3));
+    constructor() {
+        this.user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            age: 30,
+            address: {
+                street: '50 Main st',
+                city: 'Boston',
+                state: 'MA'
+            }
+        }
     }
 
-    showAge() {
-        return this.age + 2;
-    }
-
-    addNumbers(num1: number, num2: number): number {
-        return num1 + num2;
-    }
 }
+
