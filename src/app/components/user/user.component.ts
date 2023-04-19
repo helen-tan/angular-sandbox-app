@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { User } from "src/app/models/User";
 
 // Create component Decorator with @Component
@@ -16,15 +16,22 @@ import { User } from "src/app/models/User";
     // `]
 })
 
-export class UserComponent {
+export class UserComponent implements OnInit {
     // Properties
-    user: User; // points to the user interface
+    user!: User; // points to the user interface
 
     // Methods
 
     // constructor runs when component is initialized
     // constructor is usually used to inject dependencies
     constructor() {
+        
+    }
+
+    // Best practice is to use
+    // constructor for dependency injection (custom servers, http, router, etc)
+    // ngOnInit for initializations  (setting properties, calling service functions, etc)
+    ngOnInit(): void {
         this.user = {
             firstName: 'John',
             lastName: 'Doe',
