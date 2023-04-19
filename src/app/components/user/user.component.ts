@@ -16,7 +16,28 @@ import { Component } from "@angular/core";
 })
 
 export class UserComponent {
+    // Properties
+    firstName = 'John';
+    lastName = 'Doe';
+    age = 30;
 
+    // Methods
+
+    // constructor runs when component is initialized
+    // constructor is usually used to inject dependencies
+    constructor() { 
+        console.log("Hello user...");
+        this.sayHello();
+        console.log(this.age);
+        this.hasBirthday();
+        console.log(this.age);
+    }
+
+    sayHello() {
+        console.log(`Hello ${this.firstName}`);
+    }
+
+    hasBirthday() {
+        this.age += 1;
+    }
 }
-
-// Whenever we create a component, we have to add it to the app.module.ts file
