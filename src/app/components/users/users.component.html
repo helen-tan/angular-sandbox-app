@@ -1,5 +1,5 @@
 <h2>Users</h2>
-<ul *ngIf = "users.length > 0; else noUsers"> <!-- 'noUsers' is a template defined below -->
+<ul *ngIf = "loaded && users.length > 0"> <!-- <ul *ngIf = "loaded && users.length > 0; else noUsers"> 'noUsers' is a template defined below -->
     <li *ngFor = "let user of users">
         <h3>{{ user.firstName }} {{ user.lastName }}</h3>
         <ul *ngIf = "showExtended">
@@ -10,9 +10,11 @@
 </ul>
 
 <!-- noUsers template -->
-<ng-template #noUsers>
+<!-- <ng-template #noUsers>
     <h4>No Users Found</h4>
-</ng-template>
+</ng-template> -->
 
-<!-- 
-<h4 *ngIf = "users.length == 0">No Users Found</h4> -->
+
+<h4 *ngIf = "users.length == 0">No Users Found</h4>
+
+<h4 *ngIf = "!loaded">Loading Users...</h4>
