@@ -7,7 +7,10 @@
 
 <!-- List of users -->
 <ul class="list-unstyled" *ngIf = "loaded && users.length > 0"> <!-- <ul *ngIf = "loaded && users.length > 0; else noUsers"> 'noUsers' is a template defined below -->
-    <li *ngFor = "let user of users" class="card card-body mb-2">
+    <li *ngFor = "let user of users" 
+        class ="card card-body mb-2"
+        [class.bg-light] = "user.isActive"> <!-- class binding - dynamically setting a class -->
+
         <div class="row">
             <!-- Image -->
             <div class="col-sm-4">

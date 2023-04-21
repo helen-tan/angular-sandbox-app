@@ -27,7 +27,8 @@ export class UsersComponent implements OnInit {
           city: 'Boston',
           state: 'MA'
         },
-        image: "https://unsplash.it/640?image=91"
+        image: "https://unsplash.it/640?image=91",
+        isActive: true
       },
       {
         firstName: 'Kevin',
@@ -38,7 +39,8 @@ export class UsersComponent implements OnInit {
           city: 'Lynn',
           state: 'MA'
         },
-        image: "https://unsplash.it/640?image=65"
+        image: "https://unsplash.it/640?image=65",
+        isActive: false
       },
       {
         firstName: 'Karen',
@@ -49,7 +51,8 @@ export class UsersComponent implements OnInit {
             city: 'Miami',
             state: 'FL'
         },
-        image: "https://unsplash.it/600?image=64"
+        image: "https://unsplash.it/600?image=64",
+        isActive: true
       }
     ];
 
