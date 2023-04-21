@@ -14,6 +14,7 @@ export class UsersComponent implements OnInit {
   loaded: boolean = false;
   enableAdd: boolean = true;
   currentClasses = {};
+  currentStyles = {};
 
   constructor() {}
 
@@ -66,17 +67,27 @@ export class UsersComponent implements OnInit {
     //   lastName: 'Jackson',
     // })
 
-    this.setCurrentClasses()
+    this.setCurrentClasses();
+    this.setCurrentStyles();
   }
 
   addUser(user: User) {
     this.users.push(user);
   }
 
+  // For class binding with ngClass
   setCurrentClasses() {
     this.currentClasses = {
       'btn-success': this.enableAdd, // The class 'btn-success' will be applied if the property enableAdd is true
       'big-text': this.showExtended
+    }
+  }
+
+  // For style binding with ngStyle
+  setCurrentStyles() {
+    this.currentStyles = {
+      'padding-top': this.showExtended ? '0' : '40px',
+      'font-size': this.showExtended ? '' : '40px'
     }
   }
 }
