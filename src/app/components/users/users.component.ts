@@ -30,7 +30,9 @@ export class UsersComponent implements OnInit {
           state: 'MA'
         },
         image: "https://unsplash.it/640?image=91",
-        isActive: true
+        isActive: true,
+        balance: 100,
+        registered: new Date('01/02/2023 08:30:00')
       },
       {
         firstName: 'Kevin',
@@ -42,7 +44,9 @@ export class UsersComponent implements OnInit {
           state: 'MA'
         },
         image: "https://unsplash.it/640?image=65",
-        isActive: false
+        isActive: false,
+        balance: 200,
+        registered: new Date('3/11/2023 06:20:00')
       },
       {
         firstName: 'Karen',
@@ -54,7 +58,9 @@ export class UsersComponent implements OnInit {
             state: 'FL'
         },
         image: "https://unsplash.it/600?image=64",
-        isActive: true
+        isActive: true,
+        balance: 50,
+        registered: new Date('11/02/2023 10:30:00')
       }
     ];
 
