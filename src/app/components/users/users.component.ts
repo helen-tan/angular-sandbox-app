@@ -5,13 +5,14 @@ import { User } from 'src/app/models/User';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
 })
 
 export class UsersComponent implements OnInit {
   users: User[] = [];
   showExtended: boolean = true;
   loaded: boolean = false;
+  enableAdd: boolean = true;
 
   constructor() {}
 

@@ -1,4 +1,8 @@
 <h2>Users</h2>
+
+<div class="d-grid">
+    <button [disabled]= "!enableAdd" class="btn btn-light btn-black mb-3">Add New User</button>
+</div>
 <ul class="list-unstyled" *ngIf = "loaded && users.length > 0"> <!-- <ul *ngIf = "loaded && users.length > 0; else noUsers"> 'noUsers' is a template defined below -->
     <li *ngFor = "let user of users" class="card card-body mb-2">
         <h3>{{ user.firstName }} {{ user.lastName }}</h3>
