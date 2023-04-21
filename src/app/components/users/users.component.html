@@ -2,51 +2,28 @@
 
 <!-- Add Users button -->
 <div class="d-grid">
-    <button 
-        [disabled] = "!enableAdd" 
-        class = "btn btn-black mb-3"
-        [ngClass] = "currentClasses"
-    >
+    <button [disabled]="!enableAdd" class="btn btn-black mb-3">
         Add New User
     </button>
 </div>
 
 <!-- List of users -->
-<ul class="list-unstyled" *ngIf = "loaded && users.length > 0"> <!-- <ul *ngIf = "loaded && users.length > 0; else noUsers"> 'noUsers' is a template defined below -->
-    <li *ngFor = "let user of users" 
-        class = "card card-body mb-2"
-        [class.bg-light] = "user.isActive" 
-        [style.border-color] = "user.isActive ? 'green': ''"
+<ul class="list-unstyled" *ngIf="loaded && users.length > 0">
+    <!-- <ul *ngIf = "loaded && users.length > 0; else noUsers"> 'noUsers' is a template defined below -->
+    <li *ngFor="let user of users" 
+        class="card card-body mb-2" 
+        [class.bg-light]="user.isActive"
     >
-        <div class="row">
-            <!-- Image -->
-            <div class="col-sm-4">
-                <img *ngIf="user.image" [src]="user.image" alt="profile pic" class="img-fluid">
-                <!-- <img *ngIf="user.image" src={{user.image}} alt="profile pic" class="img-fluid">  -->
-                <!-- <img *ngIf="user.image" bind-src="user.image" alt="profile pic" class="img-fluid">  -->
-            </div>
-            <!-- details -->
-            <div class="col-sm-8">
-                <h3 [ngStyle]="currentStyles">{{ user.firstName | uppercase }} {{ user.lastName }}</h3>
-                <ul class="list-group" *ngIf = "showExtended && user.age && user.address">
-                    <li class="list-group-item">Age: {{ user.age }}</li>
-                    <li class="list-group-item">Address {{ user.address?.street }} {{ user.address?.city }} {{ user.address?.state }}</li>
-                    <li class="list-group-item">Balance: {{ user.balance | currency: 'GBP' : 'symbol' }}</li>
-                    <li class="list-group-item">Joined: {{ user.registered | date }}</li>
-                    <li class="list-group-item" ngNonBindable><pre>{{ 5 | number: "1.2"}}</pre></li>
-                </ul>
-            </div>
-        </div>
-
+        <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+        <ul class="list-group" *ngIf="showExtended && user.age && user.address">
+            <li class="list-group-item">Age: {{ user.age }}</li>
+            <li class="list-group-item">Address {{ user.address?.street }} {{ user.address?.city }} {{
+                user.address?.state }}</li>
+            <li class="list-group-item">Joined: {{ user.registered | date }}</li>
+        </ul>
     </li>
 </ul>
 
-<!-- noUsers template -->
-<!-- <ng-template #noUsers>
-    <h4>No Users Found</h4>
-</ng-template> -->
+<h4 *ngIf="users.length == 0">No Users Found</h4>
 
-
-<h4 *ngIf = "users.length == 0">No Users Found</h4>
-
-<h4 *ngIf = "!loaded">Loading Users...</h4>
+<h4 *ngIf="!loaded">Loading Users...</h4>
