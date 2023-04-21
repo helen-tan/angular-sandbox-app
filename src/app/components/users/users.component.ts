@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
   showExtended: boolean = true;
   loaded: boolean = false;
   enableAdd: boolean = true;
+  currentClasses = {};
 
   constructor() {}
 
@@ -64,9 +65,18 @@ export class UsersComponent implements OnInit {
     //   firstName: 'David',
     //   lastName: 'Jackson',
     // })
+
+    this.setCurrentClasses()
   }
 
   addUser(user: User) {
     this.users.push(user);
+  }
+
+  setCurrentClasses() {
+    this.currentClasses = {
+      'btn-success': this.enableAdd, // The class 'btn-success' will be applied if the property enableAdd is true
+      'big-text': this.showExtended
+    }
   }
 }

@@ -2,7 +2,13 @@
 
 <!-- Add Users button -->
 <div class="d-grid">
-    <button [disabled]= "!enableAdd" class="btn btn-light btn-black mb-3">Add New User</button>
+    <button 
+        [disabled] = "!enableAdd" 
+        class = "btn btn-black mb-3"
+        [ngClass] = "currentClasses"
+    >
+        Add New User
+    </button>
 </div>
 
 <!-- List of users -->
