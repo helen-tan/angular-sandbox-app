@@ -26,7 +26,8 @@ export class UsersComponent implements OnInit {
           street: '50 Main st',
           city: 'Boston',
           state: 'MA'
-        }
+        },
+        image: "https://unsplash.it/640?image=91"
       },
       {
         firstName: 'Kevin',
@@ -36,7 +37,8 @@ export class UsersComponent implements OnInit {
           street: '20 School st',
           city: 'Lynn',
           state: 'MA'
-        }
+        },
+        image: "https://unsplash.it/640?image=65"
       },
       {
         firstName: 'Karen',
@@ -46,7 +48,8 @@ export class UsersComponent implements OnInit {
             street: '55 Mill st',
             city: 'Miami',
             state: 'FL'
-        }
+        },
+        image: "https://unsplash.it/600?image=64"
       }
     ];
 
@@ -54,10 +57,10 @@ export class UsersComponent implements OnInit {
     this.loaded = true
 
 
-    this.addUser({
-      firstName: 'David',
-      lastName: 'Jackson',
-    })
+    // this.addUser({
+    //   firstName: 'David',
+    //   lastName: 'Jackson',
+    // })
   }
 
   addUser(user: User) {
