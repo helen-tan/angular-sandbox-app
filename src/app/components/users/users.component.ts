@@ -12,12 +12,7 @@ export class UsersComponent implements OnInit {
   user: User = {
     firstName: '',
     lastName: '',
-    age: 0,
-    address: {
-      street: '',
-      city: '',
-      state: ''
-    }
+    email: ''
   };
   users: User[] = [];
   showExtended: boolean = true;
@@ -32,12 +27,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'John',
         lastName: 'Doe',
-        age: 30,
-        address: {
-          street: '50 Main st',
-          city: 'Boston',
-          state: 'MA'
-        },
+        email: 'john@gmail.com',
         isActive: true,
         registered: new Date('01/02/2023 08:30:00'),
         hide: true
@@ -45,12 +35,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'Kevin',
         lastName: 'Johnson',
-        age: 34,
-        address: {
-          street: '20 School st',
-          city: 'Lynn',
-          state: 'MA'
-        },
+        email: 'kevin@gmail.com',
         isActive: false,
         registered: new Date('3/11/2023 06:20:00'),
         hide: true
@@ -58,12 +43,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'Karen',
         lastName: 'Williams',
-        age: 26,
-        address: {
-            street: '55 Mill st',
-            city: 'Miami',
-            state: 'FL'
-        },
+        email: 'karen@gmail.com',
         isActive: true,
         registered: new Date('11/02/2023 10:30:00'),
         hide: true
@@ -75,26 +55,17 @@ export class UsersComponent implements OnInit {
 
   }
 
-  addUser() {
-    this.user.isActive = true;
-    this.user.registered = new Date();
-    // Add to users
-    this.users.unshift(this.user);
-    // Clear out form
-    this.user = {
-      firstName: '',
-      lastName: '',
-      age: 0,
-      address: {
-        street: '',
-        city: '',
-        state: ''
-      }
-    }
-  }
-
-  // toggleHide(user: User) {
-  //   user.hide = !user.hide;
+  // addUser() {
+  //   this.user.isActive = true;
+  //   this.user.registered = new Date();
+  //   // Add to users
+  //   this.users.unshift(this.user);
+  //   // Clear out form
+  //   this.user = {
+  //     firstName: '',
+  //     lastName: '',
+  //     email: ''
+  //   }
   // }
 
   onSubmit(e: any) {
@@ -102,8 +73,4 @@ export class UsersComponent implements OnInit {
     console.log(123);
   }
 
-  fireEvent(e: any) {
-    console.log(e.type);
-    console.log(e.target.value);
-  }
 }
