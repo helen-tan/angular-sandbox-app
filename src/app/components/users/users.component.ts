@@ -9,10 +9,20 @@ import { User } from 'src/app/models/User';
 })
 
 export class UsersComponent implements OnInit {
+  user: User = {
+    firstName: '',
+    lastName: '',
+    age: 0,
+    address: {
+      street: '',
+      city: '',
+      state: ''
+    }
+  };
   users: User[] = [];
   showExtended: boolean = true;
   loaded: boolean = false;
-  enableAdd: boolean = true;
+  enableAdd: boolean = false;
   showUserForm: boolean = false;
 
   constructor() {}
@@ -65,8 +75,22 @@ export class UsersComponent implements OnInit {
 
   }
 
-  addUser(user: User) {
-    this.users.push(user);
+  addUser() {
+    this.user.isActive = true;
+    this.user.registered = new Date();
+    // Add to users
+    this.users.unshift(this.user);
+    // Clear out form
+    this.user = {
+      firstName: '',
+      lastName: '',
+      age: 0,
+      address: {
+        street: '',
+        city: '',
+        state: ''
+      }
+    }
   }
 
   // toggleHide(user: User) {
