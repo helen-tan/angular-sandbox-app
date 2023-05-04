@@ -22,6 +22,8 @@ export class UsersComponent implements OnInit {
   enableAdd: boolean = false;
   showUserForm: boolean = false;
   @ViewChild('userForm') form: any; // ViewChild arg need to match form identifier in template
+  data:any;
+
 
   // Constructor to inject Data Service
   constructor(private dataService: DataService) {
@@ -29,10 +31,17 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.users = this.dataService.getUsers();
+    // Subscribe to an Observable
+    this.dataService.getData().subscribe(data => {
+      console.log(data);
+    })
 
-    // Changed the loaded property to true
-    this.loaded = true
+    // Get users
+    this.dataService.getUsers().subscribe(users => {
+      this.users = users;
+      this.loaded = true // Changed the loaded property to true
+    });
+
 
   }
 

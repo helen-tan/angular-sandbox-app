@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { of } from 'rxjs';
 
 import { User } from '../models/User';
 
@@ -6,8 +8,9 @@ import { User } from '../models/User';
   providedIn: 'root'
 })
 export class DataService {
-
+  // Properties
   users: User[];
+  data!: Observable<any>;
 
   constructor() { 
     this.users = [
@@ -38,9 +41,33 @@ export class DataService {
     ];
   }
 
-  getUsers(): User[] {
+  // Observable example
+  getData() {
+    this.data = new Observable(observer => {
+      setTimeout(() => {
+        observer.next(1);
+      }, 1000)
+
+      setTimeout(() => {
+        observer.next(2);
+      }, 2000)
+
+      setTimeout(() => {
+        observer.next(3);
+      }, 3000)
+
+      setTimeout(() => {
+        observer.next(4);
+      }, 4000)
+    
+    });
+
+    return this.data;
+  }  
+
+  getUsers(): Observable<User[]> {
     console.log("Fetching users from service...");
-    return this.users;
+    return of(this.users); // Returns an Observable that we can subscribe to
   }
 
   addUsers(user: User) {
