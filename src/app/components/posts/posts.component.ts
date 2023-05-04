@@ -19,4 +19,12 @@ export class PostsComponent implements OnInit {
         this.posts = posts;
       })
   }
+
+  onNewPost(post: Post) {
+    this.posts.unshift(post);
+  }
+  // 1. POST req to API
+  // 2. Data of new POST is returned
+  // 3. Event emitter from the post-form component is sent to posts component
+  // 4. Event emitted is caught in onNewPosts method and post is added to the list
 }

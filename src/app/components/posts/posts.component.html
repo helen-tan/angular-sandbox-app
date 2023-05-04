@@ -1,4 +1,7 @@
-<app-post-form></app-post-form>
+<!-- How post-form is linked to posts component: -->
+<!-- newPost is an event emitted from post-form component after a post request is made -->
+<!-- onNewPost will then be triggered -->
+<app-post-form (newPost)="onNewPost($event)"></app-post-form>
 
 <h2>Posts</h2>
 <div *ngFor="let post of posts" class="card">

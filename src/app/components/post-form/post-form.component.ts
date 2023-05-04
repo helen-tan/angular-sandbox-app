@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 
 import { Post } from 'src/app/models/Post';
@@ -9,6 +9,8 @@ import { Post } from 'src/app/models/Post';
   styleUrls: ['./post-form.component.css']
 })
 export class PostFormComponent implements OnInit {
+  post: Post = { id: 0, title: '', body: ''};
+  @Output() newPost: EventEmitter<Post> = new EventEmitter;
 
   // Inject the Post Service as a Dependency
   constructor(private postService: PostService) {}
@@ -23,7 +25,10 @@ export class PostFormComponent implements OnInit {
       alert("Please add posts");
     } else {
       this.postService.savePost({title, body} as Post).subscribe(post => {
-        console.log(post);
+        //console.log(post);
+        
+        // Emit an event from this component, and include the new post
+        this.newPost.emit(post);
       })
     }
   }
