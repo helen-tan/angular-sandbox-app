@@ -1,8 +1,16 @@
 <!-- How post-form is linked to posts component: -->
 <!-- newPost is an event emitted from post-form component after a post request is made -->
 <!-- onNewPost will then be triggered -->
-<app-post-form [currentPost]="currentPost" (newPost)="onNewPost($event)"></app-post-form>
-<!-- pass currentPost into the form -->
+
+<!-- Property binding: currentPost passed into the form -->
+<!-- Property binding: isEdit passed into the form -->
+
+<app-post-form 
+    [currentPost]="currentPost" 
+    [isEdit]="isEdit"
+    (newPost)="onNewPost($event)"
+></app-post-form>
+
 <h2>Posts</h2>
 <div *ngFor="let post of posts" class="card">
     <div class="card-body">

@@ -10,7 +10,8 @@ import { Post } from 'src/app/models/Post';
 })
 export class PostFormComponent implements OnInit {
   @Output() newPost: EventEmitter<Post> = new EventEmitter;
-  @Input() currentPost: Post = { id: 0, title: '', body: ''};;
+  @Input() currentPost: Post = { id: 0, title: '', body: ''};
+  @Input() isEdit: boolean = false;
 
   // Inject the Post Service as a Dependency
   constructor(private postService: PostService) {}
@@ -31,5 +32,9 @@ export class PostFormComponent implements OnInit {
         this.newPost.emit(post);
       })
     }
+  }
+
+  updatePost() {
+    console.log(123);
   }
 }

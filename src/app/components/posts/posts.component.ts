@@ -10,6 +10,7 @@ import { PostService } from 'src/app/services/post.service';
 export class PostsComponent implements OnInit {
   posts: Post[] = [];
   currentPost: Post = { id: 0, title: '', body: ''};
+  isEdit: boolean = false;
 
   // Inject the Post Service as a Dependency
   constructor(private postService: PostService)  {}
@@ -32,5 +33,6 @@ export class PostsComponent implements OnInit {
 
   editPost(post: Post) {
     this.currentPost = post;
+    this.isEdit = true;
   }
 }
