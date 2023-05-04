@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { DataService } from 'src/app/services/data.service';
+import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/User';
 
 
@@ -26,18 +26,18 @@ export class UsersComponent implements OnInit {
 
 
   // Constructor to inject Data Service
-  constructor(private dataService: DataService) {
+  constructor(private userService: UserService) {
 
   }
 
   ngOnInit() {
     // Subscribe to an Observable
-    this.dataService.getData().subscribe(data => {
+    this.userService.getData().subscribe(data => {
       console.log(data);
     })
 
     // Get users
-    this.dataService.getUsers().subscribe(users => {
+    this.userService.getUsers().subscribe(users => {
       this.users = users;
       this.loaded = true // Changed the loaded property to true
     });
@@ -66,7 +66,7 @@ export class UsersComponent implements OnInit {
       value.registered = new Date();
       value.hide = true;
 
-      this.dataService.addUsers(value);
+      this.userService.addUsers(value);
 
       this.form.reset();
     }
