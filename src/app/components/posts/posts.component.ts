@@ -9,6 +9,7 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class PostsComponent implements OnInit {
   posts: Post[] = [];
+  currentPost: Post = { id: 0, title: '', body: ''};
 
   // Inject the Post Service as a Dependency
   constructor(private postService: PostService)  {}
@@ -27,4 +28,9 @@ export class PostsComponent implements OnInit {
   // 2. Data of new POST is returned
   // 3. Event emitter from the post-form component is sent to posts component
   // 4. Event emitted is caught in onNewPosts method and post is added to the list
+
+
+  editPost(post: Post) {
+    this.currentPost = post;
+  }
 }
