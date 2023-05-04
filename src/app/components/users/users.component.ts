@@ -57,7 +57,7 @@ export class UsersComponent implements OnInit {
       value.registered = new Date();
       value.hide = true;
 
-      this.users.unshift(value);
+      this.dataService.addUsers(value);
 
       this.form.reset();
     }
