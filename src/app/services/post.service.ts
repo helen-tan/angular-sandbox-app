@@ -3,6 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../models/Post';
 
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +17,12 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   getPosts(): Observable<Post[]> {
+    // GET request
     return this.http.get<Post[]>(this.postUrl);
+  }
+
+  savePost(post: Post): Observable<Post> {
+    // POST request
+    return this.http.post<Post>(this.postUrl, post, httpOptions);
   }
 }

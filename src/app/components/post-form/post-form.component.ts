@@ -1,10 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PostService } from 'src/app/services/post.service';
+
+import { Post } from 'src/app/models/Post';
 
 @Component({
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.css']
 })
-export class PostFormComponent {
+export class PostFormComponent implements OnInit {
 
+  // Inject the Post Service as a Dependency
+  constructor(private postService: PostService) {}
+
+  ngOnInit() {
+      
+  }
+
+  addPost(title: String, body: String) {
+    // console.log(title, body);
+    if (!title || !body) {
+      alert("Please add posts");
+    } else {
+      this.postService.savePost({title, body} as Post).subscribe(post => {
+        console.log(post);
+      })
+    }
+  }
 }
