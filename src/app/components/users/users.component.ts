@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
+import { DataService } from 'src/app/services/data.service';
 import { User } from 'src/app/models/User';
+
 
 @Component({
   selector: 'app-users',
@@ -22,35 +23,13 @@ export class UsersComponent implements OnInit {
   showUserForm: boolean = false;
   @ViewChild('userForm') form: any; // ViewChild arg need to match form identifier in template
 
-  constructor() {}
+  // Constructor to inject Data Service
+  constructor(private dataService: DataService) {
+
+  }
 
   ngOnInit() {
-    this.users = [
-      {
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'john@gmail.com',
-        isActive: true,
-        registered: new Date('01/02/2023 08:30:00'),
-        hide: true
-      },
-      {
-        firstName: 'Kevin',
-        lastName: 'Johnson',
-        email: 'kevin@gmail.com',
-        isActive: false,
-        registered: new Date('3/11/2023 06:20:00'),
-        hide: true
-      },
-      {
-        firstName: 'Karen',
-        lastName: 'Williams',
-        email: 'karen@gmail.com',
-        isActive: true,
-        registered: new Date('11/02/2023 10:30:00'),
-        hide: true
-      }
-    ];
+    this.users = this.dataService.getUsers();
 
     // Changed the loaded property to true
     this.loaded = true
