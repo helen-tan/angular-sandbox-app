@@ -35,4 +35,15 @@ export class PostsComponent implements OnInit {
     this.currentPost = post;
     this.isEdit = true;
   }
+
+  onUpdatedPost(post: Post) {
+    this.posts.forEach((cur, index) => {
+      if(post.id === cur.id) {
+        this.posts.splice(index, 1); // Remove the outdated post
+        this.posts.unshift(post);    // Make the post we updated move to the top
+        this.isEdit = false;         // Set isEdit to false, then isEdit will be passed down to the child post.form component template
+        this.currentPost = { id: 0, title: '', body: ''} // Clear ut the inputs
+      }
+    })
+  }
 }
