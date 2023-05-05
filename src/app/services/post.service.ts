@@ -16,6 +16,7 @@ export class PostService {
   // Inject Http client as a Dependency
   constructor(private http: HttpClient) { }
 
+  // Returns an Observable
   getPosts(): Observable<Post[]> {
     // GET request
     return this.http.get<Post[]>(this.postUrl);
@@ -24,5 +25,12 @@ export class PostService {
   savePost(post: Post): Observable<Post> {
     // POST request
     return this.http.post<Post>(this.postUrl, post, httpOptions);
+  }
+
+  updatePost(post: Post): Observable<Post> {
+    // PUT request
+    const url = `${this.postUrl}/${post.id}`;
+
+    return this.http.put<Post>(url, post, httpOptions);
   }
 }
